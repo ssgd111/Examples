@@ -16,6 +16,6 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 =======
-# Rupala
-Rupala SSGD App
+# Example
+Examples
 >>>>>>> edcc91d14feea4ebdb3ff5ba4bc9de85fc8b11ac
