@@ -15,6 +15,7 @@ class _SecondRouteState extends State<SecondRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:Container(
+        color: Colors.red,
         child: Hero(
           tag: widget.key1,
           child: Image.file(
