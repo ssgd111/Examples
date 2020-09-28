@@ -820,15 +820,15 @@ class _MyApp2State extends State<MyApp2> {
   }*/ //FileImage With Zooming
 
   final List<String> items = <String>[
-    '/sdcard/Rupala1/Darshan/2177421.jpg',
-    '/sdcard/Rupala1/Darshan/2878836.jpg',
-    '/sdcard/Rupala1/Darshan/6037458.jpg',
-    '/sdcard/Rupala1/Darshan/8016798.jpg',
-    '/sdcard/Rupala1/Darshan/815814.jpg',
-    '/sdcard/Rupala1/Darshan/9673592.jpg',
-    '/sdcard/Rupala1/Darshan/331911.jpg',
-    '/sdcard/Rupala1/Darshan/1213395.jpg',
-    '/sdcard/Rupala1/Darshan/2448071.jpg',
+     '/sdcard/Rupala1/Darshan/2177421.jpg',
+     '/sdcard/Rupala1/Darshan/2878836.jpg',
+     '/sdcard/Rupala1/Darshan/6037458.jpg',
+     '/sdcard/Rupala1/Darshan/8016798.jpg',
+     '/sdcard/Rupala1/Darshan/815814.jpg',
+     '/sdcard/Rupala1/Darshan/9673592.jpg',
+     '/sdcard/Rupala1/Darshan/331911.jpg',
+     '/sdcard/Rupala1/Darshan/1213395.jpg',
+     '/sdcard/Rupala1/Darshan/2448071.jpg',
   ];
 
   final List<String> abc = <String>["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9",];
@@ -867,6 +867,5 @@ class _MyApp2State extends State<MyApp2> {
       ),
     );
   } //Gridview With Hero animation
-
 
 }
