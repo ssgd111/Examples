@@ -771,7 +771,7 @@ class _MyApp2State extends State<MyApp2> {
     );
   }*/ //Check Platform Android Or Ios
 
-  static final Random random = Random();
+ /* static final Random random = Random();
  String path = "";
  File path2;
  var file;
@@ -817,9 +817,9 @@ class _MyApp2State extends State<MyApp2> {
         ),
       ),
     );
-  } //FileImage With Zooming
+  }*/ //FileImage With Zooming
 
- /* final List<String> items = <String>[
+  final List<String> items = <String>[
      '/sdcard/Rupala1/Darshan/2177421.jpg',
      '/sdcard/Rupala1/Darshan/2878836.jpg',
      '/sdcard/Rupala1/Darshan/6037458.jpg',
@@ -866,6 +866,6 @@ class _MyApp2State extends State<MyApp2> {
         },
       ),
     );
-  }*/ //Gridview With Hero animation
+  } //Gridview With Hero animation
 
 }
