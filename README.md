@@ -1,0 +1,2 @@
+# Rupala
+Rupala SSGD App
