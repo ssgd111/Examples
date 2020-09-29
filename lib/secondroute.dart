@@ -33,5 +33,5 @@ class _SecondRouteState extends State<SecondRoute> {
           imageProvider:FileImage(widget.image,scale: 1.0),
         minScale: PhotoViewComputedScale.contained*0.8,
         maxScale: PhotoViewComputedScale.covered*2,
-      ),*/
+),*/
 

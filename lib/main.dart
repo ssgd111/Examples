@@ -27,6 +27,7 @@ import 'package:test1/secondroute.dart';
 import 'dart:io';
 import 'package:file_utils/file_utils.dart';
 import 'dart:math';
+import 'package:connectivity/connectivity.dart';
 
 
 
@@ -771,7 +772,7 @@ class _MyApp2State extends State<MyApp2> {
     );
   }*/ //Check Platform Android Or Ios
 
- /* static final Random random = Random();
+  /* static final Random random = Random();
  String path = "";
  File path2;
  var file;
@@ -819,7 +820,7 @@ class _MyApp2State extends State<MyApp2> {
     );
   }*/ //FileImage With Zooming
 
-  final List<String> items = <String>[
+  /*final List<String> items = <String>[
      '/sdcard/Rupala1/Darshan/2177421.jpg',
      '/sdcard/Rupala1/Darshan/2878836.jpg',
      '/sdcard/Rupala1/Darshan/6037458.jpg',
@@ -858,14 +859,74 @@ class _MyApp2State extends State<MyApp2> {
               child:GestureDetector(
                 child: Image.file(File(items[index]),fit: BoxFit.cover,),
                 onTap:(){
-                     Navigator.push(context,MaterialPageRoute(builder:(context)=>SecondRoute(image:File(items[index]),key1:abc[index],)));
-                 },
-              )
-            ),
-          );
+                       Navigator.push(context,MaterialPageRoute(builder:(context)=>SecondRoute(image:File(items[index]),key1:abc[index],)));
+                  },
+               )
+             ),
+           );
         },
       ),
     );
-  } //Gridview With Hero animation
+  }*/ //Gridview With Hero animation
+
+  /* @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Internet connectivity'),
+        ),
+        body: Center(
+            child: RaisedButton(
+              child: Text('Check connectivity'),
+              onPressed: _checkInternetConnectivity,
+            )
+        )
+    );
+  }
+
+  _checkInternetConnectivity() async {
+
+    var result = await Connectivity().checkConnectivity();
+
+    if (result == ConnectivityResult.none) {
+      _showDialog(
+          'No internet',
+          "You're not connected to a network"
+      );
+    } else if (result == ConnectivityResult.mobile) {
+      _showDialog(
+          'Internet access',
+          "You're connected over mobile data"
+      );
+    } else if (result == ConnectivityResult.wifi){
+      _showDialog(
+          'Internet access',
+          "You're connected over wifi"
+      );
+    }
+  }
+
+  _showDialog(title, text) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(title),
+            content: Text(text),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Ok'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        }
+    );
+  }*/ //Check internet Connectivity
+
+
+
 
 }
