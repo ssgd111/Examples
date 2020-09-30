@@ -7,7 +7,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 //import 'dart:core';
 //import 'package:image_picker_saver/image_picker_saver.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
 //import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:path_provider/path_provider.dart';
 //import 'dart:io' show Platform;
@@ -17,17 +17,20 @@ import 'package:path_provider/path_provider.dart';
 //import 'package:audioplayers/audio_cache.dart';
 //import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 //import 'package:barcode_scan/barcode_scan.dart';
-import 'package:permission_handler/permission_handler.dart';
+//import 'package:permission_handler/permission_handler.dart';
 import 'package:dio/dio.dart';
+import 'package:test1/Databasefile.dart';
+import 'package:test1/databaseScreen.dart';
 //import 'package:image_picker/image_picker.dart';
 //import 'package:file_utils/file_utils.dart';
 import 'dart:math';
 import 'package:test1/secondroute.dart';
 //import 'package:firebase_messaging/firebase_messaging.dart';
 import 'dart:io';
-import 'package:file_utils/file_utils.dart';
-import 'dart:math';
-import 'package:connectivity/connectivity.dart';
+//import 'package:connectivity/connectivity.dart';
+import 'Photo.dart';
+import 'Databasefile.dart';
+import 'images.dart';
 
 
 
@@ -583,7 +586,7 @@ class _MyApp2State extends State<MyApp2> {
                 var status = await Permission.storage.status;
                 if(status.isGranted){
 
-                  dirloc = "/sdcard/Rupala/Darshan";  //Folder inside the Folder
+                  dirloc = "/sdcard/Rupala/Darshan/";  //Folder inside the Folder
 
                   FileUtils.mkdir([dirloc]);
                   var randid = random.nextInt(10000000);
@@ -623,7 +626,7 @@ class _MyApp2State extends State<MyApp2> {
         ),
       ),
     );
-  } *///Dio Download
+  }*/ //Dio Download
 
   /* File _image;
 
@@ -926,7 +929,161 @@ class _MyApp2State extends State<MyApp2> {
     );
   }*/ //Check internet Connectivity
 
+  /*final dbhelper = DataBasehelper.instance;
 
 
+  void insertdata()async{
+    Map<String,dynamic> row = {
+      DataBasehelper.columName:"/sdcard/Rupala1/Wallpaper/159768.jpg",
+      //DataBasehelper.columage:23
+    };
+    final id =  await dbhelper.insert(row);
+    print(id);
+  }
+
+
+  void  queryall()async{
+    var allrows =  await dbhelper.queryall();
+     allrows.forEach((row){
+         print(row);
+      });
+  }
+
+
+  void  queryspecific() async {
+    var allrows =  await dbhelper.queryspecific(18);
+    print(allrows);
+  }
+
+  void  delete() async {
+    var id =  await dbhelper.deletedata(2);
+    print(id);
+  }
+
+  void  update() async {
+    var row =  await dbhelper.update(2);
+    print(row);
+  }
+
+  @override
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:AppBar(
+        title:Text("Sqflite Database"),
+        centerTitle:true,
+      ),
+      body: Center(
+        child:Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children:<Widget>[
+
+            RaisedButton(
+              child:Text("Insert",style: TextStyle(color: Colors.white),),
+              onPressed:insertdata,
+              color: Colors.green,
+            ),
+
+            RaisedButton(
+              child:Text("Query",style: TextStyle(color: Colors.white),),
+              onPressed: queryall,
+              color: Colors.red,
+            ),
+
+            RaisedButton(
+              child:Text("Query Specific",style: TextStyle(color: Colors.white),),
+              onPressed:queryspecific,
+              color: Colors.teal,
+            ),
+
+            RaisedButton(
+              child:Text("Update",style: TextStyle(color: Colors.white),),
+              onPressed:update,
+              color: Colors.amber,
+            ),
+
+            RaisedButton(
+              child:Text("Delete",style: TextStyle(color: Colors.white),),
+              onPressed:delete,
+              color: Colors.pink,
+            ),
+
+            RaisedButton(
+              child:Text("Open Screen",style: TextStyle(color: Colors.white),),
+              onPressed:(){
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>Screen()));
+              },
+              color: Colors.pink,
+            ),
+          ],
+        ),
+      ),
+
+    );
+  }*/ //Store Sqlite database in Directory
+
+  Future<File> imageFile;
+
+  DBHelper dbHelper;
+ // List<Photo> images;
+  static final Random random = Random();
+
+  @override
+  void initState(){
+    super.initState();
+    images.img = [];
+    dbHelper = DBHelper();
+    refreshImages();
+  }
+
+  refreshImages(){
+    dbHelper.getPhotos().then((imgs){
+      setState((){
+        images.img.clear();
+        images.img.addAll(imgs);
+      });
+    });
+  }
+
+  pickImageFromGallery()async{
+
+    String image = "https://members.shreebrahamanandvidhyalaya.in/mobapi.ssgd.org/ssgd-daily-darshan/uploads/Darshan/2020/08/21/3d708807-9491-4f5f-89ec-733f242bc60e-photo_2020-08-21_22-31-58.jpg";
+     Dio dio = Dio();
+    var dir = await getApplicationDocumentsDirectory();
+    String dirloc = "";
+    var randid = random.nextInt(10000000);
+    dirloc = "/sdcard/SSGD/" + randid.toString() + ".jpg";  //Folder inside the Folder
+    dio.download(image, dirloc);
+    Photo photo = Photo(0,dirloc);
+    dbHelper.save(photo);
+    refreshImages();
+  }
+
+
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Database"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+              pickImageFromGallery();
+            },
+          )
+        ],
+      ),
+      body: Center(
+        child: RaisedButton(
+          child: Text("Show data"),
+          onPressed: (){
+            Navigator.push(context,MaterialPageRoute(builder: (context)=>Screen()));
+          },
+        ),
+      ),
+    );
+  }
 
 }

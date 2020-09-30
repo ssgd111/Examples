@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:photo_view/photo_view.dart';
+//import 'package:photo_view/photo_view.dart';
 import 'package:flutter/material.dart';
 
 class SecondRoute extends StatefulWidget {
