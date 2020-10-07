@@ -17,11 +17,24 @@ class _ScreenState extends State<Screen> {
     return Padding(
       padding:EdgeInsets.all(5.0),
       child:GridView.count(
-        crossAxisCount:3,
-        mainAxisSpacing:3,
-        crossAxisSpacing:3,
+        crossAxisCount:2,
+        mainAxisSpacing:5,
+        crossAxisSpacing:5,
         children:images.img.map((photo){
-          return Image.file(File(photo.photo_name),fit: BoxFit.cover,);
+          return Container(
+            decoration:BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
+            ),
+            child:ClipRRect(
+              borderRadius:BorderRadius.all(Radius.circular(15.0)),
+              child:GestureDetector(
+                onLongPress: (){
+                },
+                child: Image.file(File(photo.photo_name),fit: BoxFit.cover,
+              ),
+              ),
+            ),
+          );
         }
         ).toList(),
       ),
@@ -33,6 +46,7 @@ class _ScreenState extends State<Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar:AppBar(
         title:Text("Database Screen"),
         centerTitle: true,
