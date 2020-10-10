@@ -1,4 +1,4 @@
-/*import 'dart:io'as io;
+import 'dart:io'as io;
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -116,18 +116,18 @@ class DBHelper {
     await db.execute("CREATE TABLE $TABLE ($ID INTEGER, $NAME TEXT)");
   }
 
-  Future<Photo> save(Photo employee) async {
+  Future<Photo> save(Photo employee) async{
     var dbClient = await db;
     employee.id = await dbClient.insert(TABLE, employee.toMap());
     return employee;
   }
 
-  Future<List<Photo>> getPhotos() async {
+  Future<List<Photo>> getPhotos() async{
     var dbClient = await db;
     List<Map> maps = await dbClient.query(TABLE, columns: [ID, NAME]);
     List<Photo> employees = [];
-    if (maps.length > 0) {
-      for (int i = 0; i < maps.length; i++) {
+    if(maps.length > 0){
+      for(int i = 0; i < maps.length; i++) {
         employees.add(Photo.fromMap(maps[i]));
       }
     }
@@ -135,8 +135,9 @@ class DBHelper {
     return employees;
   }
 
-  Future close()async {
+  Future close()async{
     var dbClient = await db;
     dbClient.close();
   }
-}*/
+
+}

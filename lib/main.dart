@@ -3,37 +3,39 @@ import 'package:flutter/material.dart';
 import 'audioplayer.dart';
 /*import 'package:image_downloader/image_downloader.dart';
 //import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'dart:async';
+//import 'dart:async';
 //import 'package:wallpaper_manager/wallpaper_manager.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 //import 'dart:core';
 //import 'package:image_picker_saver/image_picker_saver.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
 //import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:path_provider/path_provider.dart';
+//import 'package:path_provider/path_provider.dart';
 //import 'dart:io' show Platform;
 //import 'package:social_share/social_share.dart';
 //import 'package:file_picker/file_picker.dart';
-//import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 //import 'package:barcode_scan/barcode_scan.dart';
 //import 'package:permission_handler/permission_handler.dart';
-import 'package:dio/dio.dart';
-import 'package:test1/Databasefile.dart';
-import 'package:test1/databaseScreen.dart';
-import 'package:image_picker/image_picker.dart';
+//import 'package:dio/dio.dart';
+//import 'package:test1/Databasefile.dart';
+//import 'package:test1/databaseScreen.dart';
+//import 'package:image_picker/image_picker.dart';
 //import 'package:file_utils/file_utils.dart';
 import 'dart:math';
 import 'package:test1/secondroute.dart';
 //import 'package:firebase_messaging/firebase_messaging.dart';
-import 'dart:io';
 //import 'package:connectivity/connectivity.dart';
-import 'Photo.dart';
-import 'Databasefile.dart';
-import 'images.dart';
-import 'griditem.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';*/
+//import 'Photo.dart';
+//import 'Databasefile.dart';
+//import 'images.dart';
+//import 'griditem.dart';
+//import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';*/
 //import 'package:audioplayers/audioplayers.dart';
 //import 'package:audioplayers/audio_cache.dart';
+//import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+//import 'package:image_cropper/image_cropper.dart';
+//import 'package:image_picker/image_picker.dart';
+//import 'dart:io';
 
 
 void main() {
@@ -396,7 +398,7 @@ class _MyApp2State extends State<MyApp2> {
     final String result = await WallpaperManager.setWallpaperFromFile(file.path, location);
   }*/ //From Url set as a WallPaper
 
- /* Duration _duration = Duration();
+  /* Duration _duration = Duration();
   Duration _position = Duration();
   AudioPlayer audioPlayer;
   AudioCache audioCache;
@@ -527,34 +529,31 @@ class _MyApp2State extends State<MyApp2> {
   YoutubePlayerController _controller;
 
   @override
-  void initState() {
+  void initState(){
     _controller = YoutubePlayerController(
-        initialVideoId: YoutubePlayer.convertUrlToId(videoURL)
+        initialVideoId:YoutubePlayer.convertUrlToId(videoURL),
     );
     super.initState();
   }
 
   @override
 
-  Widget build(BuildContext context) {
-
+  Widget build(BuildContext context){
     return Scaffold(
-
         appBar:AppBar(
           title: Text("Youtube Player"),
           centerTitle:true,
         ),
-
-      body:Container(
-       child: Center(
-         child:YoutubePlayer(
-              controller: _controller,
-              showVideoProgressIndicator: false,
+       body:Container(
+        child:Center(
+          child:YoutubePlayer(
+               controller: _controller,
+               showVideoProgressIndicator:false,
             ),
-         ),
-      ),
-    );
-  }*/ //Youtube Player
+          ),
+        ),
+      );
+   }*///Youtube Player
 
   /*String _downloadMessage = "initialising";
   bool _isDownloading = false;
@@ -975,7 +974,7 @@ class _MyApp2State extends State<MyApp2> {
 
   @override
 
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
       appBar:AppBar(
         title:Text("Sqflite Database"),
@@ -1080,10 +1079,10 @@ class _MyApp2State extends State<MyApp2> {
           )
         ],
       ),
-      body: Center(
-        child: RaisedButton(
-          child: Text("Show data"),
-          onPressed: (){
+      body:Center(
+        child:RaisedButton(
+          child:Text("Show data"),
+          onPressed:(){
             Navigator.push(context,MaterialPageRoute(builder: (context)=>Screen()));
           },
         ),
@@ -1091,49 +1090,7 @@ class _MyApp2State extends State<MyApp2> {
     );
   }*/ //Use OF Sqflite database
 
-  /*final List<String> items = <String>[
-    '/sdcard/Rupala1/Darshan/2177421.jpg',
-    '/sdcard/Rupala1/Darshan/2878836.jpg',
-    '/sdcard/Rupala1/Darshan/6037458.jpg',
-    '/sdcard/Rupala1/Darshan/8016798.jpg',
-    '/sdcard/Rupala1/Darshan/815814.jpg',
-    '/sdcard/Rupala1/Darshan/9673592.jpg',
-    '/sdcard/Rupala1/Darshan/331911.jpg',
-    '/sdcard/Rupala1/Darshan/1213395.jpg',
-    '/sdcard/Rupala1/Darshan/2448071.jpg',
-  ];
-
-  @override
-
-  Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Delete Items"),
-        centerTitle: true,
-      ),
-      body:  GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 1.0,
-          mainAxisSpacing: 4.0,
-          crossAxisSpacing: 4.0,
-        ),
-        padding: const EdgeInsets.all(4.0),
-        itemCount: items.length,
-        itemBuilder: (context,index){
-          return GridTile(
-                child:GestureDetector(
-                  child:Image.file(File(items[index]),fit: BoxFit.cover,),
-                  onLongPress:(){
-                  },
-                ),
-           );
-        },
-      ),
-    );
-  }*/
-
-  /*  List<Item> itemList;
+  /* List<Item> itemList;
   List<Item> selectedList;
 
 
@@ -1185,7 +1142,7 @@ class _MyApp2State extends State<MyApp2> {
           itemBuilder:(context,index){
             return GridItem(
                 item:itemList[index],
-                isSelected: (bool value){
+                isSelected:(bool value){
                   setState((){
                     if(value){
                        selectedList.add(itemList[index]);
@@ -1193,17 +1150,14 @@ class _MyApp2State extends State<MyApp2> {
                      }
                     else{
                         selectedList.remove(itemList[index]);
-
                         if(selectedList.length == 0){
                           selectedList.clear();
                           LongPress = false;
-                        }
-
+                         }
                        }
                      }
                    );
-                // print("$index:$value");
-                },
+                 },
                  key:Key(itemList[index].rank.toString()),
                 abcd:selectedList,
                 );
@@ -1229,136 +1183,22 @@ class _MyApp2State extends State<MyApp2> {
                  selectedList = List();
                 setState((){
                   LongPress = false;
-                });
-               }
-              );
-            },
-            child:Padding(
+                 }
+                    );
+                  }
+                );
+             },
+              child:Padding(
               padding:const EdgeInsets.all(8.0),
               child:Icon(Icons.delete),
             )
         )
       ],
     );
-  }
-
-  List<String> _imageList = List();
-  List<int> _selectedIndexList = List();
-  bool _selectionMode = false;
+  }*/ //Multiselection
 
   @override
-  Widget build(BuildContext context){
-
-    List<Widget> _buttons = List();
-
-    if(_selectionMode){
-      _buttons.add(IconButton(
-          icon: Icon(Icons.delete),
-          onPressed:(){
-            _selectedIndexList.sort();
-            print('Delete ${_selectedIndexList.length} items! Index: ${_selectedIndexList.toString()}');
-              }
-           )
-        );
-     }
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Delete Items"),
-        actions: _buttons,
-      ),
-      body: _createBody(),
-    );
-  }
-
-  @override
-  void initState(){
-    super.initState();
-    _imageList.add('https://picsum.photos/800/600/?image=280');
-    _imageList.add('https://picsum.photos/800/600/?image=281');
-    _imageList.add('https://picsum.photos/800/600/?image=282');
-    _imageList.add('https://picsum.photos/800/600/?image=283');
-    _imageList.add('https://picsum.photos/800/600/?image=284');
-  }
-
-  void _changeSelection({bool enable, int index}){
-    _selectionMode = enable;
-    _selectedIndexList.add(index);
-    if (index == -1) {
-      _selectedIndexList.clear();
-    }
-  }
-
-  Widget _createBody(){
-    return StaggeredGridView.countBuilder(
-      crossAxisCount: 2,
-      mainAxisSpacing: 4.0,
-      crossAxisSpacing: 4.0,
-      primary:false,
-      itemCount: _imageList.length,
-      itemBuilder: (BuildContext context, int index){
-        return getGridTile(index);
-      },
-      staggeredTileBuilder: (int index) => StaggeredTile.count(1, 1),
-      padding: const EdgeInsets.all(4.0),
-    );
-  }
-
-  GridTile getGridTile(int index) {
-    if (_selectionMode) {
-      return GridTile(
-          header: GridTileBar(
-            leading: Icon(
-              _selectedIndexList.contains(index) ? Icons.check_circle_outline : Icons.radio_button_unchecked,
-              color: _selectedIndexList.contains(index) ? Colors.green : Colors.black,
-            ),
-          ),
-          child: GestureDetector(
-            child: Container(
-              decoration: BoxDecoration(border: Border.all(color: Colors.blue[50], width: 30.0)),
-              child: Image.network(
-                _imageList[index],
-                fit: BoxFit.cover,
-              ),
-            ),
-            onLongPress: () {
-              setState(() {
-                _changeSelection(enable: false, index: 0);
-              });
-            },
-            onTap: () {
-              setState((){
-                if (_selectedIndexList.contains(index)) {
-                  _selectedIndexList.remove(index);
-                } else {
-                  _selectedIndexList.add(index);
-                }
-              });
-            },
-          )
-      );
-    } else {
-      return GridTile(
-        child: InkResponse(
-          child: Image.network(
-            _imageList[index],
-            fit: BoxFit.cover,
-          ),
-          onLongPress: () {
-            setState(() {
-              _changeSelection(enable: true, index: index);
-            });
-          },
-        ),
-      );
-    }
-  }*/
-
-
- @override
-
   Widget build(BuildContext context) {
-
     return Scaffold(
      appBar:AppBar(),
      body:Center(
@@ -1370,9 +1210,7 @@ class _MyApp2State extends State<MyApp2> {
        ),
      ),
     );
-
-  }
-
+   } //Music Player
 
 
 }
@@ -1382,9 +1220,7 @@ class _MyApp2State extends State<MyApp2> {
   User(this.country);
 }*/
 
-
-
-/*class Item{
+class Item{
   String imageUrl;
   int rank;
   Item(this.imageUrl,this.rank);
@@ -1392,7 +1228,7 @@ class _MyApp2State extends State<MyApp2> {
 
 
 
-class GridItem extends StatefulWidget {
+/*class GridItem extends StatefulWidget {
   final Key key;
   final Item item;
   final ValueChanged<bool> isSelected;
@@ -1458,7 +1294,7 @@ class _GridItemState extends State<GridItem> {
       ),
     );
   }
-}*/
+}*/  //Gridview for multiselection
 
  /* List<String> selectedList = [];
   bool longPressed = false;
@@ -1576,10 +1412,5 @@ class _GridItemState extends State<GridItem> {
     'y',
     'z'
   ];
-
-
-
-
-
-}*/
+}*/ // rajesh facebook
 

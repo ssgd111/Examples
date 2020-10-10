@@ -21,7 +21,7 @@ class _FullScreenState extends State<FullScreen> {
   var b;
   String ab = "Play";
 
-  void initState() {
+  void initState(){
     super.initState();
     initPlayer();
   }
@@ -42,7 +42,7 @@ class _FullScreenState extends State<FullScreen> {
     });
   }
 
-  void seekToSecond(int second) {
+  void seekToSecond(int second){
     Duration newDuration = Duration(seconds: second);
     audioPlayer.seek(newDuration);
   }
@@ -215,20 +215,20 @@ class _FullScreenState extends State<FullScreen> {
                 value: a = _position.inSeconds.toDouble(),
                 min:  0.0,
                 max: b = _duration.inSeconds.toDouble(),
-                semanticFormatterCallback:  (double newValue) {
+                semanticFormatterCallback:  (double newValue){
                   return '${newValue.round()}';
                 },
-                onChanged: (double value) {
-                  setState(() {
+                onChanged:(double value){
+                  setState((){
                     seekToSecond(value.toInt());
                     value = value;
-                  }
+                    }
                   );
                 }
-            ),
-          Padding(
+             ),
+            Padding(
               padding: EdgeInsets.only(left:25,right: 25),
-            child:Row(
+              child:Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("$a"),
@@ -240,45 +240,56 @@ class _FullScreenState extends State<FullScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                width: 70,
-                height: 70,
-                child:ClipRRect(
-                  child: Icon(Icons.arrow_left_sharp),
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(100),
-                  boxShadow:[
-                    BoxShadow(
-                        color: Colors.lightBlueAccent,
-                        offset: Offset(3.0, 3.0),
+
+              GestureDetector(
+                onTap: (){
+                  setState(() {
+                    // ignore: unnecessary_statements
+                    var c = _position.inSeconds.toDouble() - 2.0;
+                     seekToSecond(c.toInt());
+                   }
+                  );
+                },
+                child:Container(
+                  width: 70,
+                  height: 70,
+                  child:ClipRRect(
+                    child: Icon(Icons.arrow_left_sharp),
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  decoration:BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(100),
+                    boxShadow:[
+                      BoxShadow(
+                          color: Colors.lightBlueAccent,
+                          offset: Offset(3.0, 3.0),
+                          blurRadius: 10.0,
+                          spreadRadius: 3.0
+                      ),
+                      BoxShadow(
+                        color: Colors.amber,
+                        offset: Offset(-3.0,-3.0),
                         blurRadius: 10.0,
-                        spreadRadius: 3.0
+                        spreadRadius: 3.0,
+                      ),
+                    ],
+                    gradient:LinearGradient(
+                        begin:Alignment.topLeft,
+                        end:Alignment.bottomRight,
+                        colors:[
+                          Colors.grey[200],
+                          Colors.grey[300],
+                          Colors.grey[400],
+                          Colors.grey[500],
+                        ],
+                        stops:[
+                          0.1,
+                          0.5,
+                          0.8,
+                          1
+                        ]
                     ),
-                    BoxShadow(
-                      color: Colors.amber,
-                      offset: Offset(-3.0,-3.0),
-                      blurRadius: 10.0,
-                      spreadRadius: 3.0,
-                    ),
-                  ],
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors:[
-                        Colors.grey[200],
-                        Colors.grey[300],
-                        Colors.grey[400],
-                        Colors.grey[500],
-                      ],
-                      stops:[
-                        0.1,
-                        0.5,
-                        0.8,
-                        1
-                      ]
                   ),
                 ),
               ),
@@ -295,9 +306,9 @@ class _FullScreenState extends State<FullScreen> {
                   else{
                     audioPlayer.pause();
                     setState(() {
-                      isplay = false;
-                      ab = "Play";
-                    }
+                         isplay = false;
+                         ab = "Play";
+                      }
                     );
                   }
                 },
@@ -345,8 +356,13 @@ class _FullScreenState extends State<FullScreen> {
                 ),
               ),
             GestureDetector(
-              onTap: (){
-                audioPlayer.seek(Duration(seconds: 2));
+              onTap:(){
+                setState((){
+                  //ignore: unnecessary_statements
+                  var d = _position.inSeconds.toDouble() + 2.0;
+                  seekToSecond(d.toInt());
+                  }
+                );
               },
               child:Container(
                 width: 70,
@@ -367,13 +383,13 @@ class _FullScreenState extends State<FullScreen> {
                     ),
                     BoxShadow(
                       color: Colors.amber,
-                      offset: Offset(-3.0,-3.0),
+                      offset:Offset(-3.0,-3.0),
                       blurRadius: 10.0,
                       spreadRadius: 3.0,
                     ),
                   ],
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
+                  gradient:LinearGradient(
+                      begin:Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors:[
                         Colors.grey[200],
@@ -387,10 +403,10 @@ class _FullScreenState extends State<FullScreen> {
                         0.8,
                         1
                       ]
+                    ),
                   ),
                 ),
               ),
-            ),
             ],
           ),
         ],
