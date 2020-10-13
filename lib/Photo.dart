@@ -12,7 +12,7 @@ class Photo {
     return map;
   }
 
-  Photo.fromMap(Map<String, dynamic> map) {
+  Photo.fromMap(Map<String, dynamic> map){
     id = map['id'];
     photo_name = map['photo_name'];
   }

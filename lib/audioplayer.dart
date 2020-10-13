@@ -85,7 +85,7 @@ class _AudioPlayerState extends State<AudioPlayer> with SingleTickerProviderStat
             Expanded(
               child:TabBarView(
                 children:[
-                  Playlist(),
+                  //Playlist(),
                   Album(),
                 ],
                 controller: _tabController,

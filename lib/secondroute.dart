@@ -10,22 +10,23 @@ class SecondRoute extends StatefulWidget {
   _SecondRouteState createState() => _SecondRouteState();
 }
 
-class _SecondRouteState extends State<SecondRoute> {
+class _SecondRouteState extends State<SecondRoute>{
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
       body:Container(
         color: Colors.red,
         child: Hero(
-          tag: widget.key1,
-          child: Image.file(
+          tag:widget.key1,
+          child:Image.file(
               widget.image,
               fit:BoxFit.cover,
-            width:MediaQuery.of(context).size.width,
-            height:MediaQuery.of(context).size.height,
+              width:MediaQuery.of(context).size.width,
+              height:MediaQuery.of(context).size.height,
+            ),
           ),
         ),
-       ),
       );
     }
 }

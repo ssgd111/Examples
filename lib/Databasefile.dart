@@ -69,7 +69,7 @@ import 'Photo.dart';
   }
 
   // function to delete some data
-  Future<int> deletedata(int id) async {
+  Future<int> deletedata(int id) async{
     Database db = await instance.database;
     var res = await db.delete(table, where: "id = ?", whereArgs: [id]);
     return res;
@@ -83,19 +83,18 @@ import 'Photo.dart';
     return res;
   }
 
-
 }*/ //Datbase Helper file
 
 
 
-class DBHelper {
+class DBHelper{
   static Database _db;
   static const String ID = 'id';
   static const String NAME = 'photo_name';
   static const String TABLE = 'PhotosTable';
   static const String DB_NAME = 'photos.db';
 
-  Future<Database> get db async {
+  Future<Database> get db async{
     if (null != _db) {
       return _db;
     }
@@ -103,7 +102,7 @@ class DBHelper {
     return _db;
   }
 
-  initDb() async {
+  initDb() async{
     io.Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String dirloc = "";
     dirloc = "/sdcard/SSGD/DATA/";
@@ -124,7 +123,7 @@ class DBHelper {
 
   Future<List<Photo>> getPhotos() async{
     var dbClient = await db;
-    List<Map> maps = await dbClient.query(TABLE, columns: [ID, NAME]);
+    List<Map> maps = await dbClient.query(TABLE, columns:[ID,NAME]);
     List<Photo> employees = [];
     if(maps.length > 0){
       for(int i = 0; i < maps.length; i++) {

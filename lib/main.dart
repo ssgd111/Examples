@@ -1,7 +1,7 @@
 //import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'audioplayer.dart';
-/*import 'package:image_downloader/image_downloader.dart';
+//import 'package:image_downloader/image_downloader.dart';
 //import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 //import 'dart:async';
 //import 'package:wallpaper_manager/wallpaper_manager.dart';
@@ -10,26 +10,26 @@ import 'audioplayer.dart';
 //import 'package:image_picker_saver/image_picker_saver.dart';
 //import 'package:http/http.dart' as http;
 //import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-//import 'package:path_provider/path_provider.dart';
+import 'package:path_provider/path_provider.dart';
 //import 'dart:io' show Platform;
 //import 'package:social_share/social_share.dart';
 //import 'package:file_picker/file_picker.dart';
 //import 'package:barcode_scan/barcode_scan.dart';
 //import 'package:permission_handler/permission_handler.dart';
-//import 'package:dio/dio.dart';
-//import 'package:test1/Databasefile.dart';
-//import 'package:test1/databaseScreen.dart';
+import 'package:dio/dio.dart';
+import 'package:test1/Databasefile.dart';
+import 'package:test1/databaseScreen.dart';
 //import 'package:image_picker/image_picker.dart';
 //import 'package:file_utils/file_utils.dart';
 import 'dart:math';
-import 'package:test1/secondroute.dart';
+//import 'package:test1/secondroute.dart';
 //import 'package:firebase_messaging/firebase_messaging.dart';
 //import 'package:connectivity/connectivity.dart';
-//import 'Photo.dart';
+import 'Photo.dart';
 //import 'Databasefile.dart';
 //import 'images.dart';
 //import 'griditem.dart';
-//import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';*/
+//import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 //import 'package:audioplayers/audioplayers.dart';
 //import 'package:audioplayers/audio_cache.dart';
 //import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -42,7 +42,7 @@ void main() {
   runApp(MyApp());
 }
 
-enum ClrVal { white, black }
+enum ClrVal {white,black}
 
 bool LongPress = false;
 
@@ -51,14 +51,16 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp>{
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyApp2(),
+      debugShowCheckedModeBanner:false,
+      home:MyApp2(),
     );
   }
+
 }
 
 class MyApp2 extends StatefulWidget{
@@ -553,7 +555,7 @@ class _MyApp2State extends State<MyApp2> {
           ),
         ),
       );
-   }*///Youtube Player
+   }*/ //Youtube Player
 
   /*String _downloadMessage = "initialising";
   bool _isDownloading = false;
@@ -938,7 +940,6 @@ class _MyApp2State extends State<MyApp2> {
 
   /*final dbhelper = DataBasehelper.instance;
 
-
   void insertdata()async{
     Map<String,dynamic> row = {
       DataBasehelper.columName:"/sdcard/Rupala1/Wallpaper/159768.jpg",
@@ -948,14 +949,12 @@ class _MyApp2State extends State<MyApp2> {
     print(id);
   }
 
-
   void  queryall()async{
     var allrows =  await dbhelper.queryall();
      allrows.forEach((row){
          print(row);
       });
   }
-
 
   void  queryspecific() async {
     var allrows =  await dbhelper.queryspecific(18);
@@ -973,7 +972,6 @@ class _MyApp2State extends State<MyApp2> {
   }
 
   @override
-
   Widget build(BuildContext context){
     return Scaffold(
       appBar:AppBar(
@@ -985,25 +983,21 @@ class _MyApp2State extends State<MyApp2> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children:<Widget>[
-
             RaisedButton(
               child:Text("Insert",style: TextStyle(color: Colors.white),),
               onPressed:insertdata,
               color: Colors.green,
             ),
-
             RaisedButton(
               child:Text("Query",style: TextStyle(color: Colors.white),),
               onPressed: queryall,
               color: Colors.red,
             ),
-
             RaisedButton(
               child:Text("Query Specific",style: TextStyle(color: Colors.white),),
               onPressed:queryspecific,
               color: Colors.teal,
             ),
-
             RaisedButton(
               child:Text("Update",style: TextStyle(color: Colors.white),),
               onPressed:update,
@@ -1026,12 +1020,11 @@ class _MyApp2State extends State<MyApp2> {
           ],
         ),
       ),
-
     );
   }*/ //Store Sqlite database in Directory
 
-  /* DBHelper dbHelper;
- // List<Photo> images;
+   /*DBHelper dbHelper;
+    //List<Photo> images;
   static final Random random = Random();
 
   @override
@@ -1090,7 +1083,7 @@ class _MyApp2State extends State<MyApp2> {
     );
   }*/ //Use OF Sqflite database
 
-  /* List<Item> itemList;
+   List<Item> itemList;
   List<Item> selectedList;
 
 
@@ -1128,22 +1121,21 @@ class _MyApp2State extends State<MyApp2> {
 
   @override
   Widget build(BuildContext context){
-
     return Scaffold(
-      appBar: getAppBar(),
-      body: GridView.builder(
+      appBar:getAppBar(),
+      body:GridView.builder(
           itemCount:itemList.length,
-          padding: EdgeInsets.all(5),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 2,
-              mainAxisSpacing: 2
+          padding:EdgeInsets.all(5),
+          gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount:3,
+              crossAxisSpacing:2,
+              mainAxisSpacing:2
           ),
           itemBuilder:(context,index){
             return GridItem(
                 item:itemList[index],
                 isSelected:(bool value){
-                  setState((){
+                     setState((){
                     if(value){
                        selectedList.add(itemList[index]);
                       // print("$selectedList");
@@ -1159,7 +1151,6 @@ class _MyApp2State extends State<MyApp2> {
                    );
                  },
                  key:Key(itemList[index].rank.toString()),
-                abcd:selectedList,
                 );
               }
           ),
@@ -1182,22 +1173,22 @@ class _MyApp2State extends State<MyApp2> {
                   }
                  selectedList = List();
                 setState((){
-                  LongPress = false;
-                 }
-                    );
-                  }
-                );
-             },
+                       LongPress = false;
+                       }
+                     );
+                   }
+                 );
+              },
               child:Padding(
               padding:const EdgeInsets.all(8.0),
               child:Icon(Icons.delete),
-            )
-        )
+            ),
+         )
       ],
     );
-  }*/ //Multiselection
+  } //Multiselection
 
-  @override
+  /*@override
   Widget build(BuildContext context) {
     return Scaffold(
      appBar:AppBar(),
@@ -1210,8 +1201,7 @@ class _MyApp2State extends State<MyApp2> {
        ),
      ),
     );
-   } //Music Player
-
+   }*/ //Music Player
 
 }
 
@@ -1228,7 +1218,7 @@ class Item{
 
 
 
-/*class GridItem extends StatefulWidget {
+class GridItem extends StatefulWidget {
   final Key key;
   final Item item;
   final ValueChanged<bool> isSelected;
@@ -1240,12 +1230,12 @@ class Item{
   _GridItemState createState() => _GridItemState();
 }
 
-class _GridItemState extends State<GridItem> {
+class _GridItemState extends State<GridItem>{
 
   bool isSelected = false;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
 
     return InkWell(
       onLongPress:(){
@@ -1289,14 +1279,14 @@ class _GridItemState extends State<GridItem> {
               ),
             ),
           )
-              : Container()
+             : Container()
         ],
       ),
     );
   }
-}*/  //Gridview for multiselection
+}  //Gridview for multiselection
 
- /* List<String> selectedList = [];
+ /*List<String> selectedList = [];
   bool longPressed = false;
   bool isSelected = false;
 
@@ -1414,3 +1404,7 @@ class _GridItemState extends State<GridItem> {
   ];
 }*/ // rajesh facebook
 
+
+class images{
+  static List<Photo> img;
+}
